@@ -214,9 +214,7 @@ queryArgToParam arg = Param {
   , _pName = arg ^. queryArgName ^. argName ^. to unPathSegment
   }
   where
-    pType = case arg ^. queryArgType of
-      Normal -> mkPsMaybe (arg ^. queryArgName ^. argType)
-      _ -> arg ^. queryArgName ^. argType
+    pType = arg ^. queryArgName ^. argType
 
 headerArgToParam :: HeaderArg f -> Param f
 headerArgToParam (HeaderArg arg) = Param {
