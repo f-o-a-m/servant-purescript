@@ -158,13 +158,13 @@ genBuildQueryArgs args = "let queryArgs = catMaybes [" </> (indent 2 (docInterca
 ----------
 genBuildQueryArg :: QueryArg PSType -> Doc
 genBuildQueryArg arg = case arg ^. queryArgType of
-    Normal -> genQueryEncoding "encodeQueryItem spOpts_'" "<$>"
-    Flag   -> genQueryEncoding "encodeQueryItem spOpts_'" "<$> Just"
-    List   -> genQueryEncoding "encodeListQuery spOpts_'" "<$> Just"
+    Normal -> genQueryEncoding "encodeQueryItem spOpts_'"
+    Flag   -> genQueryEncoding "encodeQueryItem spOpts_'"
+    List   -> genQueryEncoding "encodeListQuery spOpts_'"
   where
     argText = arg ^. queryArgName ^. argName ^. to unPathSegment
     encodedArgName = strictText . textURLEncode True $ argText
-    genQueryEncoding fn op = fn <+> dquotes encodedArgName <+> op <+> psVar argText
+    genQueryEncoding fn = fn <+> dquotes encodedArgName <+> psVar argText
 
 -----------
 
@@ -214,9 +214,7 @@ queryArgToParam arg = Param {
   , _pName = arg ^. queryArgName ^. argName ^. to unPathSegment
   }
   where
-    pType = case arg ^. queryArgType of
-      Normal -> mkPsMaybe (arg ^. queryArgName ^. argType)
-      _ -> arg ^. queryArgName ^. argType
+    pType = arg ^. queryArgName ^. argType
 
 headerArgToParam :: HeaderArg f -> Param f
 headerArgToParam (HeaderArg arg) = Param {
