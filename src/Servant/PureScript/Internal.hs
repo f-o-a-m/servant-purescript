@@ -106,7 +106,7 @@ defaultSettings = Settings {
         , ImportLine "Prim" (Set.fromList [ "String" ]) -- For baseURL!
         , ImportLine "Data.Maybe" (Set.fromList [ "Maybe(..)"])
         , ImportLine "Data.String" (Set.fromList ["joinWith"])
-        , ImportLine "Data.Array" (Set.fromList ["catMaybes", "null"])
+        , ImportLine "Data.Array" (Set.fromList ["null"])
         , ImportLine "Data.Argonaut.Core" (Set.fromList [ "stringify" ])
         ]
   , _generateSubscriberAPI = False

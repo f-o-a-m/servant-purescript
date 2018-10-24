@@ -152,7 +152,7 @@ genBuildSegment (Cap arg) = "encodeURLPiece spOpts_'" <+> arg ^. argName ^. to u
 
 genBuildQueryArgs :: [QueryArg PSType] -> Doc
 genBuildQueryArgs [] = "let queryString = \"\""
-genBuildQueryArgs args = "let queryArgs = catMaybes [" </> (indent 2 (docIntercalate ("," <> softline) . map genBuildQueryArg $ args)) </> "]"
+genBuildQueryArgs args = "let queryArgs = [" </> (indent 2 (docIntercalate ("," <> softline) . map genBuildQueryArg $ args)) </> "]"
                   </> "let queryString = if null queryArgs then \"\" else \"?\" <> (joinWith \"&\" queryArgs)"
 
 ----------

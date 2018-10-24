@@ -18,9 +18,7 @@ newtype Hello =
     }
 
 derive instance genericHello :: Generic Hello
-
 derive instance newtypeHello :: Newtype Hello _
-
 
 --------------------------------------------------------------------------------
 _Hello :: Iso' Hello { message :: String}
@@ -31,9 +29,7 @@ newtype TestHeader =
     TestHeader String
 
 derive instance genericTestHeader :: Generic TestHeader
-
 derive instance newtypeTestHeader :: Newtype TestHeader _
-
 
 --------------------------------------------------------------------------------
 _TestHeader :: Iso' TestHeader String

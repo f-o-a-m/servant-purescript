@@ -14,7 +14,7 @@ import Data.String (joinWith)
 import Network.HTTP.Affjax (AJAX)
 import Prim (Array, Boolean, Int, String)
 import Servant.PureScript.Affjax (AjaxError, affjax, defaultRequest)
-import Servant.PureScript.Settings (SPSettingsDecodeJson_(..), SPSettingsEncodeJson_(..), SPSettings_(..), gDefaultToURLPiece)
+import Servant.PureScript.Settings (SPSettingsDecodeJson_(..), SPSettingsEncodeJson_(..), SPSettings_(..))
 import Servant.PureScript.Util (encodeHeader, encodeListQuery, encodeQueryItem, encodeURLPiece, getResult)
 import ServerTypes (Hello, TestHeader)
 
@@ -33,9 +33,9 @@ getHello reqBody myFlag myParam myParams = do
   let baseURL = spParams_.baseURL
   let httpMethod = "GET"
   let queryArgs = catMaybes [
-    encodeQueryItem spOpts_' "myFlag" <$> Just myFlag,
-    encodeQueryItem spOpts_' "myParam" <$> myParam,
-    encodeListQuery spOpts_' "myParams" <$> Just myParams
+    encodeQueryItem spOpts_' "myFlag" myFlag,
+    encodeQueryItem spOpts_' "myParam" myParam,
+    encodeListQuery spOpts_' "myParams" myParams
   ]
   let queryString = if null queryArgs then "" else "?" <> (joinWith "&" queryArgs)
   let reqUrl = baseURL <> "hello" <> queryString
