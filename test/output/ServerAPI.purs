@@ -7,7 +7,7 @@ import Control.Monad.Aff.Class (class MonadAff)
 import Control.Monad.Error.Class (class MonadError)
 import Control.Monad.Reader.Class (ask, class MonadAsk)
 import Data.Argonaut.Core (stringify)
-import Data.Array (catMaybes, null)
+import Data.Array (null)
 import Data.Maybe (Maybe, Maybe(..))
 import Data.Nullable (toNullable)
 import Data.String (joinWith)
@@ -32,7 +32,7 @@ getHello reqBody myFlag myParam myParams = do
   let testHeader = spParams_.testHeader
   let baseURL = spParams_.baseURL
   let httpMethod = "GET"
-  let queryArgs = catMaybes [
+  let queryArgs = [
     encodeQueryItem spOpts_' "myFlag" myFlag,
     encodeQueryItem spOpts_' "myParam" myParam,
     encodeListQuery spOpts_' "myParams" myParams

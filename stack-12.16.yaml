@@ -1,0 +1,33 @@
+resolver: lts-12.16
+packages:
+- '.'
+
+allow-newer: true
+extra-deps:
+- git: https://github.com/f-o-a-m/servant-subscriber.git
+  commit: ac7a66453da76d3ae9a975dc0d31994fa52f23a5
+- ghc-mod-5.8.0.0
+- base-4.9.1.0
+- cabal-helper-0.7.3.0
+- djinn-ghc-0.0.2.3
+- extra-1.5.3
+- ghc-syb-utils-0.2.3.3
+- haskell-src-exts-1.19.1
+- hlint-2.0.15
+- monad-journal-0.7.2
+- temporary-1.2.1.1
+- djinn-lib-0.0.1.3
+- process-1.4.3.0
+- ghc-8.2.2
+- transformers-compat-0.6.2
+- servant-0.13.0.1
+- servant-client-core-0.13.0.1
+- servant-server-0.13.0.1
+- servant-client-0.13.0.1
+
+flags: {}
+ 
+extra-package-dbs: []
+
+nix:
+   shell-file: stack-8.0.nix

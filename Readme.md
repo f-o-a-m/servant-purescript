@@ -1,6 +1,8 @@
 Servant Purescript
 ==================
 
+## ***This branch uses lts-12.16 (ghc-8.4.4) but downgrades servant from `0.14` to `0.13.0.1`**
+
 [![Build Status](https://travis-ci.org/eskimor/servant-purescript.svg?branch=master)](https://travis-ci.org/eskimor/servant-purescript)
 
 Generate typed PureScript query functions for your servant-api. Find an example, including
